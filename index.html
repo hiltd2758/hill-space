@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hil Tran | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HT</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Collab</a>
+                <a href="#bookmarked">Resources</a> 
+            </nav>
+        </div>
+    </header> 
+
+    <main>
+        <section class="hero" id="about">
+            <div class="hero-content">
+                <h1>Hil Tran.</h1>
+                <div class="subtitle">
+                    <p>Still learning, always curious.</p></div>
+                <p style="color: var(--secondary-color); margin-bottom: 2rem; max-width: 540px;">
+                    I'm a student diving into software development ^^.
+                </p>
+                <a href="mailto:hiltd2758@ut.edu.vn" class="cta-button">Contact with me</a>
+            </div>
+            <div class="hero-image">
+                <div class="imgContainer">
+                    <img src="assets/profile.png" alt="profile-img">
+                </div>
+            </div>
+        </section>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-laptop-code"></i>
+                <div class="stat-number">12+</div>
+                <p>Personal Projects</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-layer-group"></i>
+                <div class="stat-number">6</div>
+                <p>Tech Stack</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-music"></i>
+                <div class="stat-number">3</div>
+                <p>Instruments Played</p> 
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-globe"></i>
+                <div class="stat-number">3</div>
+                <p>Languages Spoken <br>(VN, EN, CN)</p>
+            </div>
+        </div>
+        
+
+        <section class="projects" id="projects">
+            <h2 class="section-title">What I'm Working On</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3 class="project-title">Upcoming 🎵</h3>
+                    <p class="project-description">
+                        A web app for musicians and songwriters to store, organize, and experiment with their melodies.
+                        Features include melody recording, chord progression tracking.
+                        I'm looking for teammates to cooperate.🎼
+                    </p>
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Code Experiments 📚</h3>
+                    <p class="project-description">
+                        I have experience with C++ and web technologies including HTML, CSS, and JavaScript. 
+                        Currently, I’m preparing to dive into Java and exploring cloud computing with AWS to expand my skill set. 🚀
+                    </p>                    
+                </div>
+                <div class="project-card">
+                    <h3 class="project-title">Collaboration 🤝</h3>
+                    <p class="project-description">
+                        I'm interested in contributing to open-source projects and collaborating on web applications.
+                        If you have an idea, feel free to reach out! ✉️
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section id="bookmarked" class="resources-section">
+            <h2 class="section-title">Knowledge Zone</h2>
+                    <div class="resource-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="dev">Development</button>
+                <button class="filter-btn" data-filter="design">UI/UX Design</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+            </div>
+        
+            <div class="resources-grid">
+                <div class="resource-category" data-category="design">
+                    <div class="category-header">
+                        <h3><i class="fas fa-paint-brush"></i> UI/UX Design</h3>
+                        <span class="resource-count">4 resources</span>
+                    </div>
+                    <div class="resource-cards">
+                        <a href="https://www.figma.com/community" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fab fa-figma"></i></div>
+                                <div class="resource-tag">Tool</div>
+                            </div>
+                            <h4>Figma Community</h4>
+                            <p>Free UI kits, design systems, and plugins</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.9</span>
+                                <span class="type">Free</span>
+                            </div>
+                        </a>
+        
+                        <a href="https://fonts.google.com" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-font"></i></div>
+                                <div class="resource-tag">Fonts</div>
+                            </div>
+                            <h4>Google Fonts</h4>
+                            <p>Open-source font families for web</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.8</span>
+                                <span class="type">Free</span>
+                            </div>
+                        </a>
+        
+                        <a href="https://material.io/design" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-palette"></i></div>
+                                <div class="resource-tag">Guide</div>
+                            </div>
+                            <h4>Material Design</h4>
+                            <p>Google's design system guidelines</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.7</span>
+                                <span class="type">Free</span>
+                            </div>
+                        </a>
+        
+                        <a href="https://www.fontpair.co" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-text-height"></i></div>
+                                <div class="resource-tag">Typography</div>
+                            </div>
+                            <h4>FontPair</h4>
+                            <p>Free font pairing suggestions</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.5</span>
+                                <span class="type">Free</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+        
+                <div class="resource-category" data-category="dev">
+                    <div class="category-header">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <span class="resource-count">2 resources</span>
+                    </div>
+                    <div class="resource-cards">
+                        <a href="https://roadmap.sh" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-map"></i></div>
+                                <div class="resource-tag">Guide</div>
+                            </div>
+                            <h4>Developer Roadmaps</h4>
+                            <p>Step-by-step guides for different tech paths</p>
+                        </a>
+        
+                        <a href="https://github.com/jwasham/coding-interview-university" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-laptop-code"></i></div>
+                                <div class="resource-tag">Learning</div>
+                            </div>
+                            <h4>Coding Interview University</h4>
+                            <p>Complete study plan for software engineering</p>
+                        </a>
+                    </div>
+                </div>
+                        <div class="resource-category" data-category="tools">
+                    <div class="category-header">
+                        <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                        <span class="resource-count">3 resources</span>
+                    </div>
+                    <div class="resource-cards">
+                        <a href="https://github.com" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fab fa-github"></i></div>
+                                <div class="resource-tag">Version Control</div>
+                            </div>
+                            <h4>GitHub</h4>
+                            <p>World's leading software development platform</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.9</span>
+                                <span class="type">Free/Pro</span>
+                            </div>
+                        </a>
+        
+                        <a href="https://code.visualstudio.com" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-code-branch"></i></div>
+                                <div class="resource-tag">Editor</div>
+                            </div>
+                            <h4>Visual Studio Code</h4>
+                            <p>Powerful code editor with extensive plugin ecosystem</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.8</span>
+                                <span class="type">Free</span>
+                            </div>
+                        </a>
+        
+                        <a href="https://www.squarespace.com/logo" class="resource-card" target="_blank">
+                            <div class="card-header">
+                                <div class="resource-icon"><i class="fas fa-square"></i></div>
+                                <div class="resource-tag">Design</div>
+                            </div>
+                            <h4>Squarespace Logo Maker</h4>
+                            <p>Professional logo design tool for brands</p>
+                            <div class="card-footer">
+                                <span class="popularity"><i class="fas fa-star"></i> 4.6</span>
+                                <span class="type">Free/Pro</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="social-bar">
+        <a href="https://github.com/hiltd2758" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/hil-tr%E1%BA%A7n-68066233a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/hilyh_woqq/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://web.facebook.com/hiltd05" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+
+</body>
+<script src="script.js">
+
+</script>
+</html>

@@ -125,6 +125,7 @@ main {
     overflow: hidden;
     border: 3px solid var(--primary-color);
     position: relative;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 .imgContainer::after {
@@ -139,7 +140,19 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
 }
+
+.imgContainer:hover {
+    box-shadow: 0 0 10px var(--primary-color),
+                0 0 20px var(--primary-color),
+                0 0 30px var(--primary-color);
+}
+
+.imgContainer:hover img {
+    transform: scale(1.1);
+}
+
 
 .greeting {
     color: var(--primary-color);
@@ -187,11 +200,13 @@ h1 {
 }
 
 .stats-grid {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
+    gap: 15px;
     padding: 20px;
-    justify-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .stat-card {
@@ -208,44 +223,33 @@ h1 {
     place-content: center;
     text-align: center;
     font-size: 1.2em;
-
-    --border-size: 0.3rem;
-    border: var(--border-size) solid transparent;
-    border-image: conic-gradient(
-        from var(--angle),
-        #64ffda 0deg 90deg,        
-        #a78bfa 90deg 180deg,      
-        #3b82f6 180deg 270deg,     
-        #689083 270deg 360deg 
-    ) 1 stretch;
-    background-color: var(--card-bg);
-    animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
 }
-
-@property --opacity {
-    syntax: "<number>";
-    initial-value: 0.5;
-    inherits: false;
-}
-
-@property --angle {
+@property --angle{
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
 }
+.stat-card::after, .stat-card::before{
+    /* background-image: conic-gradient( from var(--angle), #ff4545,#00ff99,#006aff,#ff0095); */
+    /* background-image: conic-gradient( from var(--angle), var(--primary-color),var(--primary-color)); */
 
-@keyframes opacityChange {
-    to {
-        --opacity: 1;
-    }
+    background-image: conic-gradient(from var(--angle), transparent 10%, rgb(54, 54, 210));
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 10px;
+    animation: 3s spin linear infinite;
 }
-
-@keyframes rotate {
-    to {
-        --angle: 360deg;
-    }
+.stat-card::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
 }
-
 .stat-card i {
     font-size: 32px;
     margin-bottom: 10px;
@@ -256,8 +260,14 @@ h1 {
     font-weight: bold;
     margin-bottom: 5px;
 }
-
-
+@keyframes spin {
+    from{
+        --angle: 0deg;
+    }
+    to{
+        --angle: 360deg;
+    }
+}
 p {
     font-size: 14px;
     margin: 0;
@@ -596,6 +606,12 @@ p {
     margin: 0 auto;
     background-color: var(--secondary-color);
 }
+@media (max-width: 1299px) {
+    .social-bar {
+        display: none;
+    }
+}
+
 
 @media (max-width: 768px) {
     .hero {
@@ -616,9 +632,11 @@ p {
         width: 250px;
         height: 250px;
     }
-    .social-bar {
-        display: none;
-    }
+    
+    /* .social-bar {
+        opacity: 0;
+        pointer-events: none;
+    }  */
     .resources-grid {
         gap: 2rem;
     }

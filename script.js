@@ -1,7 +1,5 @@
-// Initialize EmailJS
 emailjs.init("IdZindU3V5A_y8F2Q");
 
-// Contact Form Handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(event) {
@@ -21,13 +19,13 @@ if (contactForm) {
         };
 
         emailjs.send(
-            'service_2n0kllk',
+            'service_jovlfaz',
             'template_j0chp08',
             {
                 from_name: formData.name,
                 from_email: formData.email,
                 message: formData.message,
-                to_email: 'your-email@example.com'
+                to_email: 'hiltd2758@ut.edu.vn'
             }
         )
         .then(function(response) {
@@ -75,7 +73,49 @@ document.querySelectorAll('.filter-btn').forEach(button => {
         });
     });
 });
+document.querySelectorAll('header nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const targetPosition = targetSection.offsetTop - headerHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            
+            document.querySelectorAll('header nav a').forEach(navLink => {
+                navLink.classList.remove('active');
+            });
+            this.classList.add('active');
+        }
+    });
+});
 
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const headerHeight = document.querySelector('header').offsetHeight;
+    
+    document.querySelectorAll('section[id]').forEach(section => {
+        const sectionTop = section.offsetTop - headerHeight - 100; // Added some offset for better UX
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            document.querySelectorAll('header nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+});
 document.querySelectorAll(".cta-button").forEach(button => {
     button.addEventListener("click", function(e) {
         let ripple = document.createElement("span");

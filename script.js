@@ -73,49 +73,46 @@ document.querySelectorAll('.filter-btn').forEach(button => {
         });
     });
 });
-document.querySelectorAll('header nav a').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
-        
-        if (targetSection) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            const targetPosition = targetSection.offsetTop - headerHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-            
-            document.querySelectorAll('header nav a').forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-            this.classList.add('active');
-        }
+document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    // Smooth scroll
+    navLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - 50,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Highlight active navigation link on scroll
+    window.addEventListener("scroll", function () {
+        let currentSection = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 60;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").substring(1) === currentSection) {
+                link.classList.add("active");
+            }
+        });
     });
 });
 
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.scrollY;
-    const headerHeight = document.querySelector('header').offsetHeight;
-    
-    document.querySelectorAll('section[id]').forEach(section => {
-        const sectionTop = section.offsetTop - headerHeight - 100; // Added some offset for better UX
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            document.querySelectorAll('header nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
 document.querySelectorAll(".cta-button").forEach(button => {
     button.addEventListener("click", function(e) {
         let ripple = document.createElement("span");
@@ -274,4 +271,33 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.project-feed-card').forEach(card => {
     observer.observe(card);
+});
+
+
+const initializeMobileNav = () => {
+    const navbarToggle = document.querySelector('.navbar-toggle');
+    const navbar = document.querySelector('.navbar'); // Thay đổi selector này
+    const navbarMenu = document.querySelector('.navbar-menu');
+    
+    if (navbarToggle && navbar && navbarMenu) {
+        navbarToggle.addEventListener('click', () => {
+            navbarToggle.classList.toggle('active');
+            navbar.classList.toggle('active');
+            navbarMenu.classList.toggle('active'); // Thêm toggle cho menu
+        });
+
+        // Thêm event listener cho các link trong menu
+        document.querySelectorAll('.navbar-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                navbarToggle.classList.remove('active');
+                navbarMenu.classList.remove('active');
+            });
+        });
+    }
+};
+
+// Đảm bảo function được gọi khi DOM load
+document.addEventListener('DOMContentLoaded', () => {
+    initializeMobileNav();
 });

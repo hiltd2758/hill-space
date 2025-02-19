@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".navbar a");
 
-    // Smooth scroll
+    
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
@@ -276,17 +276,16 @@ document.querySelectorAll('.project-feed-card').forEach(card => {
 
 const initializeMobileNav = () => {
     const navbarToggle = document.querySelector('.navbar-toggle');
-    const navbar = document.querySelector('.navbar'); // Thay đổi selector này
+    const navbar = document.querySelector('.navbar');
     const navbarMenu = document.querySelector('.navbar-menu');
     
     if (navbarToggle && navbar && navbarMenu) {
         navbarToggle.addEventListener('click', () => {
             navbarToggle.classList.toggle('active');
             navbar.classList.toggle('active');
-            navbarMenu.classList.toggle('active'); // Thêm toggle cho menu
+            navbarMenu.classList.toggle('active'); // thêm toggle
         });
 
-        // Thêm event listener cho các link trong menu
         document.querySelectorAll('.navbar-menu li a').forEach(link => {
             link.addEventListener('click', () => {
                 navbar.classList.remove('active');
@@ -300,5 +299,4 @@ const initializeMobileNav = () => {
 document.addEventListener('DOMContentLoaded', () => {
     initializeMobileNav();
 });
-
 

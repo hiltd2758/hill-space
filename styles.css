@@ -6,6 +6,17 @@
     --card-bg: #112240;
     --hover-color: #233554;
     --dark: #1edeb2;
+
+    --terminal-bg: #0a0e14;
+    --terminal-text: #a6e22e;
+    --terminal-highlight: #f92672;
+    --terminal-secondary: #66d9ef;
+    --terminal-success: #a6e22e;
+    --terminal-warning: #e6db74;
+    --terminal-error: #fd971f;
+    --terminal-font: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --terminal-transition: all 0.3s ease;
+    --terminal-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 #bird-model{
     position:fixed;
@@ -414,7 +425,7 @@ h1 {
 
 /*feed*/
 
-.projects {
+.hil-projects {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
 }
@@ -435,14 +446,14 @@ h1 {
     background: var(--hover-color);
 }
 
-.project-grid {
+.hil-project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
 }
 
-.project-card {
+.hil-project-card {
     position: relative;
     background: #112240;
     color: white;
@@ -457,20 +468,20 @@ h1 {
     justify-content: center;
 }
 
-.project-title {
+.hil-project-title {
     color: #ccd6f6;
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.project-description {
+.hil-project-description {
     color: var(--secondary-color);
     margin-bottom: 1.5rem;
 }
 
 
-.project-card::after,
-.project-card::before {
+.hil-project-card::after,
+.hil-project-card::before {
     background-image: conic-gradient(from var(--angle), 
     transparent 10%, #8e44ad); /* Tím huyền bí */
     content: " ";
@@ -486,7 +497,7 @@ h1 {
     animation: 3s spin linear infinite;
 }
 
-.project-card::before {
+.hil-project-card::before {
     filter: blur(1.5rem);
     opacity: 0.5;
 }
@@ -580,6 +591,9 @@ h1 {
     text-decoration: none;
 }
 
+
+
+/*  skills */
 .skills-container{
     row-gap: 1.5rem;
 
@@ -1499,3 +1513,5 @@ h1 {
     width: 20px;
     border-radius: 10px;
 }
+
+

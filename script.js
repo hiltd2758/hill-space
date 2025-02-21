@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
     terminalInput.setAttribute("placeholder", "Type a command...");
     inputWrapper.appendChild(terminalInput);
 
-    // Terminal state and settings
+
     let terminalActive = false;
     let commandHistory = JSON.parse(localStorage.getItem("command-history") || "[]");
     let historyIndex = commandHistory.length;
@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isDragging = false;
     let offsetX, offsetY;
 
-    // Enhanced themes with more properties
+
     let themes = {
         "monokai": { 
             bg: "#272822", 
@@ -419,16 +419,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Initialize position from localStorage or set default
+
     let position = JSON.parse(localStorage.getItem("terminal-position") || '{"x": "20px", "y": "20px"}');
     terminal.style.left = position.x;
     terminal.style.top = position.y;
 
-    // Load saved theme or set default
+
     let currentTheme = localStorage.getItem("terminal-theme") || "monokai";
     applyTheme(currentTheme);
 
-    // Add draggable functionality
     terminalHeader.addEventListener("mousedown", startDrag);
     document.addEventListener("mousemove", dragTerminal);
     document.addEventListener("mouseup", stopDrag);
@@ -454,7 +453,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (isDragging) {
             isDragging = false;
             terminal.style.opacity = "1";
-            // Save position
+
             localStorage.setItem("terminal-position", JSON.stringify({
                 x: terminal.style.left,
                 y: terminal.style.top
@@ -462,7 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Event Listeners
+
     document.addEventListener("keydown", function (event) {
         if (event.key === "`") toggleTerminal();
         if (event.key === "Escape" && terminalActive) toggleTerminal(false);
@@ -504,9 +503,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const hours = now.getHours();
         let greeting;
         
-        if (hours < 12) greeting = "Good morning";
-        else if (hours < 18) greeting = "Good afternoon";
-        else greeting = "Good evening";
+        if (hours >= 5 && hours < 12) {
+            greeting = "Good morning!";
+        } else if (hours >= 12 && hours < 18) {
+            greeting = "Good afternoon! Time for some coffee? ☕";
+        } else if (hours >= 18 && hours < 22) {
+            greeting = "Good evening! Perfect time to chill and code! 🌙";
+        } else if (hours >= 22 || hours < 2) {
+            greeting = "Why are you still up? Đang fix bug hả người đẹp";
+        } else if (hours >= 2 && hours < 5) {
+            greeting = "Bro, it's demon hours. Ngủ được rồi nha người đẹp 🌚";
+        } else {
+            greeting = "Hello, time traveler! Are you coding from another dimension? ⏳🌀";
+        }
+        
+        console.log(greeting);
+        
         
         terminalOutput.innerHTML = `
             <div class="welcome-message">
@@ -624,7 +636,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
                     "Why do Java developers wear glasses? Because they don't C#!",
                     "I told my computer I needed a break, and now it won't stop sending me vacation ads.",
-                    "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings."
+                    "Why was the JavaScript developer sad? Because he didn't know how to 'null' his feelings.",
+                    "Why coders never get lost? Cuz they always stay on they path, no GPS needed. 🤷🏾‍♂️",
+                    "How coders flirt? 'Ayo, you a syntax error? Cuz every time I see you, my heart throws exceptions.' 😏",
+                    "Why did the JavaScript developer go broke? Cuz he couldn't find a 'return' statement. 🤷🏾‍♂️",
+                    "C++ devs in relationships be like: 'I love you… but I need more pointers.' 👀",
+                    "Why JS devs bad at commitments? Cuz they always async/awaitin'. 🤷🏾‍♂️",
+                    "Why did the CSS developer go broke? Cuz he couldn't find a selector. 🤷🏾‍♂️",
+                    "Why coders don’t drive? Cuz they tryna Ctrl + Z instead of hittin’ the brakes. 🚗💨",
+                    "Why did the HTML developer go broke? Cuz he couldn't find a DOCTYPE. 🤷🏾‍♂️",
+                    "Why I can’t date a front-end dev? Cuz they only care bout looks. "
                 ];
                 response.innerHTML = jokes[Math.floor(Math.random() * jokes.length)];
                 break;
@@ -644,8 +665,87 @@ document.addEventListener("DOMContentLoaded", function () {
                     response.innerHTML = `<div class="history-list">${historyItems}</div>`;
                 }
                 break;
+                case "tictactoe":
+                    response.innerHTML = `
+                        <div class="tictactoe-container">
+                            <div class="tictactoe-status">Game mới bắt đầu - Lượt của X</div>
+                            <div class="tictactoe-board">
+                                <div class="tictactoe-row">
+                                    <div class="tictactoe-cell" data-index="0"></div>
+                                    <div class="tictactoe-cell" data-index="1"></div>
+                                    <div class="tictactoe-cell" data-index="2"></div>
+                                </div>
+                                <div class="tictactoe-row">
+                                    <div class="tictactoe-cell" data-index="3"></div>
+                                    <div class="tictactoe-cell" data-index="4"></div>
+                                    <div class="tictactoe-cell" data-index="5"></div>
+                                </div>
+                                <div class="tictactoe-row">
+                                    <div class="tictactoe-cell" data-index="6"></div>
+                                    <div class="tictactoe-cell" data-index="7"></div>
+                                    <div class="tictactoe-cell" data-index="8"></div>
+                                </div>
+                            </div>
+                            <button class="tictactoe-reset">Chơi lại</button>
+                        </div>
+                    `;
+                    const gameStyle = document.createElement('style');
+                    gameStyle.textContent = `
+                        .tictactoe-container {
+                            padding: 10px;
+                            margin-top: 10px;
+                            font-family: monospace;
+                        }
+                        .tictactoe-status {
+                            margin-bottom: 10px;
+                            font-weight: bold;
+                            color: var(--text-color, #33ff33);
+                        }
+                        .tictactoe-board {
+                            display: inline-block;
+                            background: var(--bg-secondary, #222);
+                            border: 2px solid var(--text-color, #33ff33);
+                        }
+                        .tictactoe-row {
+                            display: flex;
+                        }
+                        .tictactoe-cell {
+                            width: 50px;
+                            height: 50px;
+                            border: 1px solid var(--text-color, #33ff33);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 24px;
+                            cursor: pointer;
+                            transition: background-color 0.2s;
+                        }
+                        .tictactoe-cell:hover {
+                            background-color: rgba(51, 255, 51, 0.1);
+                        }
+                        .tictactoe-reset {
+                            margin-top: 10px;
+                            background: var(--bg-secondary, #222);
+                            color: var(--text-color, #33ff33);
+                            border: 1px solid var(--text-color, #33ff33);
+                            padding: 5px 10px;
+                            cursor: pointer;
+                            font-family: monospace;
+                        }
+                        .tictactoe-reset:hover {
+                            background-color: rgba(51, 255, 51, 0.1);
+                        }
+                    `;
+                    document.head.appendChild(gameStyle);
+                    
+
+                    setTimeout(() => {
+                        initTicTacToe(response);
+                    }, 100);
+                    break;
             default:
-                response.innerHTML = `Command not found: <span class="error-text">${command}</span><br>Type <span class="cmd-highlight">help</span> for available commands.`;
+
+                response.innerHTML = `Gõ <span class="error-text"> sai chính tả </span> rồi á người đẹp ơi :3 <br>Command not found: <span class="error-text">${command}</span><br>Type <span class="cmd-highlight">help</span> for available commands.`;
         }
         
         terminalOutput.appendChild(response);
@@ -679,7 +779,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3>Fun Commands</h3>
                     <ul>
                         <li><span class="cmd-highlight">weather</span> - Check simulated weather</li>
-                        <li><span class="cmd-highlight">joke</span> - Tell a programming joke</li>
+                        <li><span class="cmd-highlight">joke</span> - Tell a: <span class="error-text">&nbspdad&nbsp;joke</span></li>
+                        <li><span class="cmd-highlight">tictactoe</span> - Play tic-tac-toe with me </li>
                     </ul>
                 </div>
             </div>
@@ -849,3 +950,115 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+
+function initTicTacToe(container) {
+    const board = container.querySelector('.tictactoe-board');
+    const cells = container.querySelectorAll('.tictactoe-cell');
+    const status = container.querySelector('.tictactoe-status');
+    const resetButton = container.querySelector('.tictactoe-reset');
+    
+    let currentPlayer = 'X';
+    let gameState = ['', '', '', '', '', '', '', '', ''];
+    let gameActive = true;
+    
+    const winningConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ];
+    
+    function handleCellClick(clickedCellEvent) {
+        const clickedCell = clickedCellEvent.target;
+        const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+        
+        if (gameState[clickedCellIndex] !== '' || !gameActive) {
+            return;
+        }
+        
+        gameState[clickedCellIndex] = currentPlayer;
+        clickedCell.textContent = currentPlayer;
+        clickedCell.style.color = currentPlayer === 'X' ? '#33ff33' : '#ff3366';
+        
+        checkResult();
+    }
+    
+    function checkResult() {
+        let roundWon = false;
+        
+        for (let i = 0; i < winningConditions.length; i++) {
+            const [a, b, c] = winningConditions[i];
+            
+            if (gameState[a] === '' || gameState[b] === '' || gameState[c] === '') {
+                continue;
+            }
+            
+            if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
+                roundWon = true;
+                break;
+            }
+        }
+        
+        if (roundWon) {
+            status.textContent = `Người chơi ${currentPlayer} thắng!`;
+            gameActive = false;
+            return;
+        }
+        
+        const roundDraw = !gameState.includes('');
+        if (roundDraw) {
+            status.textContent = 'Hòa!';
+            gameActive = false;
+            return;
+        }
+        
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        status.textContent = `Lượt của ${currentPlayer}`;
+    }
+    
+    function restartGame() {
+        currentPlayer = 'X';
+        gameState = ['', '', '', '', '', '', '', '', ''];
+        gameActive = true;
+        status.textContent = 'Game mới bắt đầu - Lượt của X';
+        
+        cells.forEach(cell => {
+            cell.textContent = '';
+        });
+    }
+    
+    // Gắn sự kiện cho các ô và nút reset
+    cells.forEach(cell => {
+        cell.addEventListener('click', handleCellClick);
+    });
+    
+    resetButton.addEventListener('click', restartGame);
+    
+    // Đảm bảo game container không làm scroll terminal
+    board.addEventListener('mousewheel', (e) => {
+        e.stopPropagation();
+    }, { passive: false });
+}
+
+const terminal = document.querySelector('.terminal');
+
+document.addEventListener("DOMContentLoaded", () => {
+    const terminal = document.querySelector('.terminal');
+
+    if (terminal) {
+        terminal.addEventListener("mouseenter", () => {
+            document.body.style.overflow = "hidden"; // Khóa cuộn khi chuột vào terminal
+        });
+
+        terminal.addEventListener("mouseleave", () => {
+            document.body.style.overflow = ""; 
+        });
+    } else {
+        console.warn("Element .terminal not found!");
+    }
+});
+

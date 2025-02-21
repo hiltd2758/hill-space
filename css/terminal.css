@@ -912,3 +912,46 @@
   .theme-hacker, .theme-matrix {
     --prompt-color-rgb: 0, 255, 0;
   }
+
+  /* CSS này nên được thêm vào file CSS chính của bạn */
+
+/* Ngăn hiệu ứng scroll khi chơi game trong terminal */
+.terminal-container .tictactoe-container {
+    user-select: none;
+}
+
+.terminal-container .tictactoe-cell {
+    color: var(--text-color, #33ff33);
+    font-weight: bold;
+}
+
+/* Hiệu ứng khi hover chuột trên ô */
+.terminal-container .tictactoe-cell:hover:empty {
+    background-color: rgba(51, 255, 51, 0.15);
+}
+
+/* Đánh dấu X với màu xanh */
+.terminal-container .tictactoe-cell.x {
+    color: #33ff33;
+}
+
+/* Đánh dấu O với màu hồng/đỏ */
+.terminal-container .tictactoe-cell.o {
+    color: #ff3366;
+}
+
+/* Hiệu ứng cho nút reset */
+.terminal-container .tictactoe-reset {
+    transition: all 0.2s;
+    outline: none;
+}
+
+.terminal-container .tictactoe-reset:hover {
+    background-color: rgba(51, 255, 51, 0.2);
+}
+
+/* Làm cho container của game fit với terminal */
+.command-response .tictactoe-container {
+    margin-top: 12px;
+    margin-bottom: 8px;
+}

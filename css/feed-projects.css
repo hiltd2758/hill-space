@@ -1,0 +1,186 @@
+:root{
+    --prim-color: #7856ff;
+    --sec-color: #a8a9bc;
+    --bg-black: rgba(10, 10, 15, 0.75);
+    --border-black: rgba(70, 70, 100, 0.3);
+    --glow-dark: rgba(120, 86, 255, 0.15);
+    --border-hover: rgba(120, 86, 255, 0.5);
+}
+
+.projects-section {
+    padding: 4rem 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    width: 100%;
+  }
+  
+  .projectItem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.8rem 1.5rem;
+    background: var(--bg-black);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-black);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 16px 4px 24px 8px;
+    height: 100%;
+  }
+  
+  .projectItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(120, 86, 255, 0.1) 60%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  .projectItem::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at center,
+      transparent 30%,
+      rgba(120, 86, 255, 0.03) 70%,
+      transparent 100%
+    );
+    opacity: 0;
+    transform: scale(0);
+    z-index: -2;
+    transition: transform 0.8s ease, opacity 0.8s ease;
+  }
+  
+  .projectItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5),
+      0 0 20px var(--glow-dark),
+      inset 0 0 10px rgba(120, 86, 255, 0.2);
+    border-color: var(--border-hover);
+    border-radius: 8px 20px 8px 28px;
+  }
+  
+  .projectItem:hover::before {
+    opacity: 1;
+  }
+  
+  .projectItem:hover::after {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .darkerText {
+    font-size: 0.9rem;
+    color: var(--prim-color);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    padding-left: 12px;
+  }
+  
+  .darkerText::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: var(--prim-color);
+    transform: translateY(-50%) rotate(45deg);
+  }
+  
+  /* .project-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+  } */
+  
+  .project-description {
+    color: var(--sec-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+    transition: color 0.3s ease;
+    flex-grow: 1;
+  }
+  
+  .projectItem:hover .project-description {
+    color: #ffffff;
+  }
+  
+  .tech-stack {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+  }
+  
+  .tech {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(120, 86, 255, 0.15);
+    color: #c7b8ff;
+    transition: all 0.3s ease;
+  }
+  
+  .projectItem:hover .tech {
+    background: rgba(120, 86, 255, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .projectLinks {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .project-link {
+    display: flex;
+    align-items: center;
+    color: var(--prim-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  
+  .project-link:hover {
+    background: rgba(120, 86, 255, 0.1);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+  
+  .link-icon {
+    margin-right: 6px;
+    font-size: 1.1rem;
+  }
+

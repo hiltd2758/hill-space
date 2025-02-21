@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="css/terminal.css">
-
+    <link rel="stylesheet" href="css/feed-projects.css">
+    <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
     <div class="bg-container">
@@ -42,7 +43,7 @@
     <main>
         <section class="hero" id="about">
             <div class="hero-content">
-                <h1>Hil Tran.</h1>
+                <h1>Hi, I'm <span class="hil-gradient-custom">Hil Tran.</span></h1>
                 <div class="subtitle">
                     <p>Still learning, always curious.</p></div>
                 <p style="color: var(--secondary-color); margin-bottom: 2rem; max-width: 540px;">
@@ -232,53 +233,85 @@
         </section>
         
         <!-- feed -->
-        <section class="projectContainer" id="projects">
-            <h2 class="section-title">Tiny Project</h2>
-        
-            <div class="projectItem">
-                <div>
+        <section class="projects-section" id="projects">
+            <h2 class="section-title">Tiny Projects</h2>
+            
+            <div class="projects-container">
+                <div class="projectItem">
                     <p class="darkerText">Dec 4, 2024</p>
-                    <p>Image to Text - Extract text from images using OCR technology for easy editing and accessibility.</p>
+                    <h3 class="project-title">Image to Text</h3>
+                    <p class="project-description">Extract text from images using OCR technology for easy editing and accessibility.</p>
+                    <div class="tech-stack">
+                        <span class="tech">OCR</span>
+                        <span class="tech">JavaScript</span>
+                        <span class="tech">HTML5</span>
+                    </div>
                     <div class="projectLinks">
-                        <a href="https://github.com/hiltd2758/img-to-text" target="_blank">Source Code</a> |
-                        <a href="https://hiltd2758.github.io/img-to-text/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/hiltd2758/img-to-text" target="_blank" class="project-link">
+                            <span class="link-icon">&#128279;</span>Source Code
+                        </a>
+                        <a href="https://hiltd2758.github.io/img-to-text/" target="_blank" class="project-link">
+                            <span class="link-icon">&#127760;</span>Live Demo
+                        </a>
                     </div>
                 </div>
-
-            </div>
-        
-            <div class="projectItem">
-                <div>
+                
+                <div class="projectItem">
                     <p class="darkerText">Dec 6, 2024</p>
-                    <p>Text to Voice - Convert written text into speech using Web Speech API with adjustable voice settings.</p>
+                    <h3 class="project-title">Text to Voice</h3>
+                    <p class="project-description">Convert written text into speech using Web Speech API with adjustable voice settings.</p>
+                    <div class="tech-stack">
+                        <span class="tech">Web Speech API</span>
+                        <span class="tech">JavaScript</span>
+                        <span class="tech">CSS3</span>
+                    </div>
                     <div class="projectLinks">
-                        <a href="https://github.com/hiltd2758/text-to-voice" target="_blank">Source Code</a> |
-                        <a href="https://hiltd2758.github.io/text-to-voice/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/hiltd2758/text-to-voice" target="_blank" class="project-link">
+                            <span class="link-icon">&#128279;</span>Source Code
+                        </a>
+                        <a href="https://hiltd2758.github.io/text-to-voice/" target="_blank" class="project-link">
+                            <span class="link-icon">&#127760;</span>Live Demo
+                        </a>
                     </div>
                 </div>
-
-            </div>
-            <div class="projectItem">
-                <div>
+                
+                <div class="projectItem">
                     <p class="darkerText">Feb 10, 2025</p>
-                    <p>Explore country with basic information, compare two countries by population, area, GDP, and time zones in a fun battle!</p>
+                    <h3 class="project-title">Country Explorer</h3>
+                    <p class="project-description">Explore country information and compare two countries by population, area, GDP, and time zones in a fun battle!</p>
+                    <div class="tech-stack">
+                        <span class="tech">API</span>
+                        <span class="tech">JavaScript</span>
+                        <span class="tech">Responsive</span>
+                    </div>
                     <div class="projectLinks">
-                        <a href="https://github.com/hiltd2758/about-country"_blank">Source Code</a> |
-                        <a href="https://hiltd2758.github.io/about-country/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/hiltd2758/about-country" target="_blank" class="project-link">
+                            <span class="link-icon">&#128279;</span>Source Code
+                        </a>
+                        <a href="https://hiltd2758.github.io/about-country/" target="_blank" class="project-link">
+                            <span class="link-icon">&#127760;</span>Live Demo
+                        </a>
                     </div>
                 </div>
-               
-            </div>
-            <div class="projectItem">
-                <div>
+                
+                <div class="projectItem">
                     <p class="darkerText">Feb 15, 2025</p>
-                    <p>AVL Tree Visualization Project</p>
+                    <h3 class="project-title">AVL Tree Visualization</h3>
+                    <p class="project-description">Interactive visualization of AVL tree operations and balancing algorithms for educational purposes.</p>
+                    <div class="tech-stack">
+                        <span class="tech">Data Structures</span>
+                        <span class="tech">Canvas</span>
+                        <span class="tech">Algorithms</span>
+                    </div>
                     <div class="projectLinks">
-                        <a href="https://github.com/hiltd2758/avl_visual" target="_blank">Source Code</a> |
-                        <a href="https://hiltd2758.github.io/avl_visual/" target="_blank">Live Demo</a>
+                        <a href="https://github.com/hiltd2758/avl_visual" target="_blank" class="project-link">
+                            <span class="link-icon">&#128279;</span>Source Code
+                        </a>
+                        <a href="https://hiltd2758.github.io/avl_visual/" target="_blank" class="project-link">
+                            <span class="link-icon">&#127760;</span>Live Demo
+                        </a>
                     </div>
                 </div>
-               
             </div>
         </section>
         
@@ -388,51 +421,52 @@
                 </div>
             </div>
         </section>
-        <section class="contact-section" id="contact">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact" id="contact">
-                <div class="form-decoration decoration-1"></div>
-                <div class="form-decoration decoration-2"></div>
-                <h2 class="contact-title">Get in Touch</h2>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                placeholder="Enter Your Name"
-                                required
-                        >
-                        <label for="name">Name</label>
-                    </div>
-            
-                    <div class="form-group">
-                        <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Enter Your Email Address"
-                                required
-                        >
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea
-                                id="message"
-                                name="message"
-                                rows="5"
-                                placeholder="Enter Your Message"
-                                required
-                        ></textarea>
-                        <label for="message">Message</label>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Send Message
-                    </button>
-                </form>
+<!-- contact -->
+<section class="contact-section" id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact" id="contact">
+        <div class="form-decoration decoration-1"></div>
+        <div class="form-decoration decoration-2"></div>
+        <h2 class="contact-title">Get in Touch</h2>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter Your Name"
+                        required
+                >
+                <label for="name">Name</label>
             </div>
-    </section>  
+
+            <div class="form-group">
+                <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter Your Email Address"
+                        required
+                >
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+                <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Enter Your Message"
+                        required
+                ></textarea>
+                <label for="message">Message</label>
+            </div>
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+            </button>
+        </form>
+    </div>
+</section>
     </main>
     <div class="social-bar">
         <a href="https://github.com/hiltd2758" target="_blank"><i class="fab fa-github"></i></a>
@@ -440,7 +474,7 @@
         <a href="https://www.instagram.com/hilyh_woqq/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://web.facebook.com/hiltd05" target="_blank"><i class="fab fa-facebook"></i></a>
     </div>
-
+    <div class="terminal"></div>
 </body>
 <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">

@@ -26,6 +26,11 @@
     --border-black: rgba(70, 70, 100, 0.3);
     --glow-dark: rgba(120, 86, 255, 0.15);
     --border-hover: rgba(120, 86, 255, 0.5);
+
+    /* bg */
+    --hue: 250;
+    --primary-glow: hsl(var(--hue), 80%, 60%);
+    --secondary-glow: hsl(calc(var(--hue) + 120), 80%, 60%);
 }
 * {
     margin: 0;
@@ -34,54 +39,6 @@
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
 }
-
-body {
-
-    color: var(--primary-color);
-    min-height: 100vh;
-    line-height: 1.6;
-    justify-content: center;
-    /* padding-top: 80px; */
-    scroll-behavior: smooth;
-
-    /* nội dung này được thêm vào ngày 21/2 */
-    /* align-items: center; */
-}
-.bg-container {
-    position: relative;
-    width: 100%;
-    height: 100%; /* Chiếm toàn bộ chiều cao màn hình */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* gap: 100px; */
-    overflow: hidden; /* Ẩn phần thừa nếu có */
-    /* border: 1px solid red; */
-}
-
-.back-vid {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw; /* Chiếm toàn bộ chiều rộng */
-    height: 100vh; /* Chiếm toàn bộ chiều cao */
-    object-fit: cover; /* Đảm bảo video phủ đầy mà không bị méo */
-    z-index: -1;
-    mix-blend-mode: overlay;
-}
-
-
-@media (max-aspect-ratio: 16/9) {
-    .back-vid{
-        width:auto;
-        height: 100%;
-    }
-}
-@media(min-aspect-ratio: 16/9){
-    .back-vid{
-        width: 100%;
-        height:100%;
-    }}
 
 
 code{
@@ -107,7 +64,6 @@ code{
     width: 100%;
     position: fixed;
     top: 0;
-    /* position:sticky; */
     background: transparent;
     box-shadow: 0 10px 20px rgba(0,0,0, 0.5);
     backdrop-filter: blur(10px);
@@ -233,11 +189,11 @@ main {
 }
 
 .hero {
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding-bottom: 1rem;
+    /* padding-bottom: 1rem; */
 
 
 
@@ -1201,7 +1157,6 @@ h1 {
 
 
 
-/* contact form */
 .contact {
     width: 100%;
     max-width: 600px;
@@ -1236,7 +1191,7 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.social-bar a:nth-child(1):hover { color: #6e5494; } 
+.social-bar a:nth-child(1):hover { color: #000; } 
 .social-bar a:nth-child(2):hover { color: #0077b5; } 
 .social-bar a:nth-child(3):hover { color: #e4405f; } 
 .social-bar a:nth-child(4):hover { color: #1877f2; } 

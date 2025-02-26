@@ -1282,7 +1282,7 @@ h1 {
     
 
     .imgContainer {
-        position: relative;
+        /* position: relative; */
         width: 250px;
         height: 250px;
         clip-path: ellipse(50% 50% at 50% 50%);   

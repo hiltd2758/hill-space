@@ -1282,10 +1282,11 @@ h1 {
     
 
     .imgContainer {
+        position: relative;
         width: 250px;
         height: 250px;
-        border-radius: 50%;
-        overflow: hidden;
+        clip-path: ellipse(50% 50% at 50% 50%);   
+             overflow: hidden;
     }
 
     .resources-grid {

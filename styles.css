@@ -254,7 +254,9 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 1.5rem;
   }
+
   
   .imgContainer {
     width: 440px;
@@ -264,7 +266,6 @@ main {
     border: 3px solid var(--primary-color);
     position: relative;
     transition: box-shadow 0.3s ease-in-out;
-    /* No animation */
   }
   
   .imgContainer::after {
@@ -1283,6 +1284,7 @@ h1 {
     .imgContainer {
         width: 250px;
         height: 250px;
+        border-radius: 50%;
     }
 
     .resources-grid {

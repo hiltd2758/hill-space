@@ -92,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Highlight active navigation link on scroll
     window.addEventListener("scroll", function () {
         let currentSection = "";
 
@@ -303,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // terminal-mode
 document.addEventListener("DOMContentLoaded", function () {
-    // Terminal UI Creation
     const terminal = document.createElement("div");
     terminal.classList.add("terminal-mode");
     document.body.appendChild(terminal);
@@ -463,7 +461,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     document.addEventListener("keydown", function (event) {
-        if (event.key === "`") toggleTerminal();
+        if (event.key === "`") {
+            event.preventDefault();
+            toggleTerminal();
+        }
         if (event.key === "Escape" && terminalActive) toggleTerminal(false);
         if (terminalActive && event.key === "ArrowUp") navigateHistory("up");
         if (terminalActive && event.key === "ArrowDown") navigateHistory("down");
@@ -597,9 +598,9 @@ document.addEventListener("DOMContentLoaded", function () {
             case "contact":
                 response.innerHTML = `
                     <div class="contact-info">
-                        <p>Email: <a href="mailto:hil.tran@example.com" class="terminal-link">hil.tran@example.com</a></p>
+                        <p>Email: <a href="mailto:hiltd2758@ut.edu.vn" class="terminal-link">hiltd2758@ut.edu.vn</a></p>
                         <p>GitHub: <a href="https://github.com/hiltd2758" class="terminal-link" target="_blank">github.com/hiltd2758</a></p>
-                        <p>LinkedIn: <a href="https://linkedin.com/in/hiltran" class="terminal-link" target="_blank">linkedin.com/in/hiltran</a></p>
+                        <p>LinkedIn: <a href="https://www.linkedin.com/in/hil-tr%E1%BA%A7n-68066233a/" class="terminal-link" target="_blank">linkedin.com/in/hil-tr%E1%BA%A7n-68066233a</a></p>
                     </div>
                 `;
                 break;
@@ -858,8 +859,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function simulateWeatherReport(element) {
         const weather = ["Sunny", "Cloudy", "Rainy", "Thunderstorm", "Snowy", "Windy", "Foggy"];
-        const temp = Math.floor(Math.random() * 35) + 5; // 5-40°C
-        const humidity = Math.floor(Math.random() * 60) + 30; // 30-90%
+        const temp = Math.floor(Math.random() * 35) + 5; 
+        const humidity = Math.floor(Math.random() * 60) + 30;
         const condition = weather[Math.floor(Math.random() * weather.length)];
         
         element.innerHTML = `
@@ -1031,14 +1032,12 @@ function initTicTacToe(container) {
         });
     }
     
-    // Gắn sự kiện cho các ô và nút reset
     cells.forEach(cell => {
         cell.addEventListener('click', handleCellClick);
     });
     
     resetButton.addEventListener('click', restartGame);
     
-    // Đảm bảo game container không làm scroll terminal
     board.addEventListener('mousewheel', (e) => {
         e.stopPropagation();
     }, { passive: false });
@@ -1051,7 +1050,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (terminal) {
         terminal.addEventListener("mouseenter", () => {
-            document.body.style.overflow = "hidden"; // Khóa cuộn khi chuột vào terminal
+            document.body.style.overflow = "hidden"; 
         });
 
         terminal.addEventListener("mouseleave", () => {

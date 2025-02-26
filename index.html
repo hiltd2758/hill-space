@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hil Tran | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -18,9 +19,16 @@
     <link rel="stylesheet" href="css/feed-projects.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/bg.css">
+    <link rel="stylesheet" href="css/hint.css">
 </head>
 <body>
     <div class="cursor-particles"></div>
+    <div class="glitch-hint">
+        <p>Press <span class="glitch-hint__key" data-text="`">`</span> to open terminal</p>
+        <p class="glitch-hint__vn"><span style="font-size: 0.8em; opacity: 0.9;">Ấn phím bên trái "1", dưới Esc, trên Tab á người đẹp!</span></p>
+        <div class="glitch-hint__scanline"></div>
+        <div class="glitch-hint__glow"></div>
+    </div>
         <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo" style="--i: 1"> HT</a>
@@ -44,9 +52,10 @@
             <div class="hero-content">
                 <h1>Hi, I'm <span class="hil-gradient-custom">Hil Tran.</span></h1>
                 <div class="subtitle">
-                    <p>Still learning, always curious.</p></div>
+                    <p>Still learning, always curious.</p>
+                </div>
                 <p style="color: var(--secondary-color); margin-bottom: 2rem; max-width: 540px;">
-                    I'm a student diving into software development ^^.
+                    I'm a student diving into software development ^^. 
                 </p>
                 <a href="mailto:trandonghil11a5@gmail.com" class="cta-button" style="--i: 7">Contact with me</a>
             </div>
@@ -55,7 +64,6 @@
                     <img src="assets/profile.png" alt="profile-img">
                 </div>
             </div>
-            
         </section>
         <section>
             <div class="stats-grid">
@@ -486,5 +494,6 @@
    })();
 </script>
 <script src="script.js"></script>
+<script src="js/hint.js"></script>
 
 </html>

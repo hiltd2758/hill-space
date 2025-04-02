@@ -14,16 +14,12 @@ function createParticle(x, y) {
     particle.style.top = `${y}px`;
     particle.style.boxShadow = '0 0 8px rgba(100, 255, 218, 0.8)'; 
     particleContainer.appendChild(particle);
-
     const angle = Math.random() * Math.PI * 2;
     const speed = Math.random() * 2 + 1;
     const life = Math.random() * 500 + 500;
-
     return { element: particle, x, y, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, life, maxLife: life };
 }
-
-// Cập nhật và xóa hạt
-function updateParticles() {
+function updateParticles(){
     for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
         p.x += p.vx;

@@ -54,8 +54,8 @@
     left: 15px;
     background: linear-gradient(90deg, #2d99ff, #00c2cb, #00ffaf);
     /* text-shadow: 0 0 3px #14ffec, 0 0 1px #0ef6cc; */
-    background-clip: text;
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 0.9rem;
     opacity: 0;

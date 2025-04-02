@@ -1,12 +1,9 @@
 emailjs.init("IdZindU3V5A_y8F2Q");
-
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(event) {
+    contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
-
         if (!validateForm()) return;
-
         const submitBtn = this.querySelector('.submit-btn');
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -28,18 +25,18 @@ if (contactForm) {
                 to_email: 'hiltd2758@ut.edu.vn'
             }
         )
-        .then(function(response) {
-            alert('Thank you! Your message has been sent successfully.');
-            contactForm.reset();
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-        })
-        .catch(function(error) {
-            alert('Oops! Something went wrong. Please try again later.');
-            console.error('EmailJS error:', error);
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-        });
+            .then(function (response) {
+                alert('Thank you! Your message has been sent successfully.');
+                contactForm.reset();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            })
+            .catch(function (error) {
+                alert('Oops! Something went wrong. Please try again later.');
+                console.error('EmailJS error:', error);
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
     });
 }
 
@@ -76,8 +73,6 @@ document.querySelectorAll('.filter-btn').forEach(button => {
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".navbar a");
-
-    
     navLinks.forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
@@ -94,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", function () {
         let currentSection = "";
-
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 60;
             const sectionHeight = section.clientHeight;
@@ -102,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentSection = section.getAttribute("id");
             }
         });
-
         navLinks.forEach(link => {
             link.classList.remove("active");
             if (link.getAttribute("href").substring(1) === currentSection) {
@@ -113,19 +106,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.querySelectorAll(".cta-button").forEach(button => {
-    button.addEventListener("click", function(e) {
+    button.addEventListener("click", function (e) {
         let ripple = document.createElement("span");
         ripple.classList.add("ripple");
 
         let rect = this.getBoundingClientRect();
         let x = e.clientX - rect.left;
         let y = e.clientY - rect.top;
-
         ripple.style.left = `${x}px`;
         ripple.style.top = `${y}px`;
-
         this.appendChild(ripple);
-
         setTimeout(() => {
             ripple.remove();
         }, 600);
@@ -133,10 +123,10 @@ document.querySelectorAll(".cta-button").forEach(button => {
 });
 
 document.querySelectorAll('.rating-stars i').forEach(star => {
-    star.addEventListener('click', function() {
+    star.addEventListener('click', function () {
         const ratingValue = Array.from(this.parentElement.children).indexOf(this) + 1;
         const projectCard = this.closest('.project-feed-card');
-        
+
         this.parentElement.querySelectorAll('i').forEach((s, index) => {
             s.className = index < ratingValue ? 'fas fa-star' : 'far fa-star';
         });
@@ -156,7 +146,6 @@ document.querySelectorAll('.rating-stars i').forEach(star => {
 document.querySelectorAll('.comment-input').forEach(input => {
     const button = input.querySelector('.comment-btn');
     const textInput = input.querySelector('input');
-
     button.addEventListener('click', () => {
         if (textInput.value.trim()) {
             const commentsSection = input.closest('.project-comments');
@@ -196,11 +185,11 @@ if (searchInput) {
             const description = card.querySelector('p').textContent.toLowerCase();
             const techStack = Array.from(card.querySelectorAll('.tech-tag'))
                 .map(tag => tag.textContent.toLowerCase());
-            
-            const matches = title.includes(searchTerm) || 
-                           description.includes(searchTerm) ||
-                           techStack.some(tech => tech.includes(searchTerm));
-            
+
+            const matches = title.includes(searchTerm) ||
+                description.includes(searchTerm) ||
+                techStack.some(tech => tech.includes(searchTerm));
+
             card.style.display = matches ? 'block' : 'none';
         });
     });
@@ -213,17 +202,17 @@ if (loadMoreBtn) {
         try {
             loadMoreBtn.textContent = 'Loading...';
             await new Promise(resolve => setTimeout(resolve, 1000));
-            
+
             const projectsGrid = document.querySelector('.projects-feed-grid');
             const template = document.querySelector('.project-feed-card').cloneNode(true);
             template.querySelector('h3').textContent = `New Project ${page + 1}`;
             projectsGrid.appendChild(template);
-            
+
             page++;
             if (page >= 3) {
                 loadMoreBtn.style.display = 'none';
             }
-            
+
             loadMoreBtn.textContent = 'Load More Projects';
         } catch (error) {
             loadMoreBtn.textContent = 'Error Loading Projects';
@@ -232,7 +221,7 @@ if (loadMoreBtn) {
 }
 
 document.querySelectorAll('.action-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
         this.classList.toggle('bookmarked');
         const icon = this.querySelector('i');
         if (this.classList.contains('bookmarked')) {
@@ -277,7 +266,7 @@ const initializeMobileNav = () => {
     const navbarToggle = document.querySelector('.navbar-toggle');
     const navbar = document.querySelector('.navbar');
     const navbarMenu = document.querySelector('.navbar-menu');
-    
+
     if (navbarToggle && navbar && navbarMenu) {
         navbarToggle.addEventListener('click', () => {
             navbarToggle.classList.toggle('active');
@@ -339,7 +328,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const promptSymbol = document.createElement("span");
     promptSymbol.classList.add("prompt-symbol");
-    promptSymbol.textContent = ">";
     inputWrapper.appendChild(promptSymbol);
 
     const terminalInput = document.createElement("input");
@@ -359,48 +347,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     let themes = {
-        "monokai": { 
-            bg: "#272822", 
+        "monokai": {
+            bg: "#272822",
             text: "#f8f8f2",
             headerBg: "#1e1f1c",
             promptColor: "#a6e22e",
             linkColor: "#66d9ef",
-            font: "'JetBrains Mono', monospace" 
+            font: "'JetBrains Mono', monospace"
         },
-        "dracula": { 
-            bg: "#282a36", 
+        "dracula": {
+            bg: "#282a36",
             text: "#f8f8f2",
             headerBg: "#1e1e2e",
             promptColor: "#bd93f9",
             linkColor: "#8be9fd",
-            font: "'Fira Code', monospace" 
+            font: "'Fira Code', monospace"
         },
-        "nord": { 
-            bg: "#2e3440", 
+        "nord": {
+            bg: "#2e3440",
             text: "#d8dee9",
             headerBg: "#272c36",
             promptColor: "#88c0d0",
             linkColor: "#81a1c1",
             font: "'Source Code Pro', monospace"
         },
-        "github-dark": { 
-            bg: "#0d1117", 
+        "github-dark": {
+            bg: "#0d1117",
             text: "#c9d1d9",
             headerBg: "#161b22",
             promptColor: "#58a6ff",
             linkColor: "#58a6ff",
             font: "'SF Mono', monospace"
         },
-        "tokyo-night": { 
-            bg: "#1a1b26", 
+        "tokyo-night": {
+            bg: "#1a1b26",
             text: "#a9b1d6",
             headerBg: "#16161e",
             promptColor: "#7aa2f7",
             linkColor: "#bb9af7",
             font: "'Cascadia Code', monospace"
         },
-        "hacker": { 
-            bg: "#000", 
+        "hacker": {
+            bg: "#000",
             text: "#00ff00",
             headerBg: "#0a0a0a",
             promptColor: "#00ff00",
@@ -422,14 +410,11 @@ document.addEventListener("DOMContentLoaded", function () {
     terminal.style.left = position.x;
     terminal.style.top = position.y;
 
-
     let currentTheme = localStorage.getItem("terminal-theme") || "monokai";
     applyTheme(currentTheme);
-
     terminalHeader.addEventListener("mousedown", startDrag);
     document.addEventListener("mousemove", dragTerminal);
     document.addEventListener("mouseup", stopDrag);
-
     function startDrag(e) {
         if (e.target === minimizeBtn || e.target === closeBtn) return;
         isDragging = true;
@@ -438,7 +423,6 @@ document.addEventListener("DOMContentLoaded", function () {
         offsetY = e.clientY - rect.top;
         terminal.style.opacity = "0.8";
     }
-
     function dragTerminal(e) {
         if (!isDragging) return;
         const x = e.clientX - offsetX;
@@ -446,20 +430,16 @@ document.addEventListener("DOMContentLoaded", function () {
         terminal.style.left = `${x}px`;
         terminal.style.top = `${y}px`;
     }
-
     function stopDrag() {
         if (isDragging) {
             isDragging = false;
             terminal.style.opacity = "1";
-
             localStorage.setItem("terminal-position", JSON.stringify({
                 x: terminal.style.left,
                 y: terminal.style.top
             }));
         }
     }
-
-
     document.addEventListener("keydown", function (event) {
         if (event.key === "`") {
             event.preventDefault();
@@ -469,8 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (terminalActive && event.key === "ArrowUp") navigateHistory("up");
         if (terminalActive && event.key === "ArrowDown") navigateHistory("down");
     });
-
-    minimizeBtn.addEventListener("click", function() {
+    minimizeBtn.addEventListener("click", function () {
         if (isMinimized) {
             terminal.classList.remove("minimized");
             isMinimized = false;
@@ -480,7 +459,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    closeBtn.addEventListener("click", function() {
+    closeBtn.addEventListener("click", function () {
         toggleTerminal(false);
     });
 
@@ -491,19 +470,18 @@ document.addEventListener("DOMContentLoaded", function () {
             terminalInput.focus();
             isMinimized = false;
             terminal.classList.remove("minimized");
-            
+
 
             if (terminalOutput.innerHTML === "") {
                 showWelcome();
             }
         }
     }
-
     function showWelcome() {
         const now = new Date();
         const hours = now.getHours();
         let greeting;
-        
+
         if (hours >= 5 && hours < 12) {
             greeting = "Good morning!";
         } else if (hours >= 12 && hours < 18) {
@@ -517,10 +495,10 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             greeting = "Hello, time traveler! Are you coding from another dimension? ⏳🌀";
         }
-        
+
         console.log(greeting);
-        
-        
+
+
         terminalOutput.innerHTML = `
             <div class="welcome-message">
                 <div class="ascii-art">
@@ -536,7 +514,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
     }
-
     terminalInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             let command = terminalInput.value.trim();
@@ -544,15 +521,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 lastCommand = command;
                 commandHistory.push(command);
                 historyIndex = commandHistory.length;
-                
-                if (commandHistory.length > 50) {
-                    commandHistory = commandHistory.slice(-50);
+
+                //lưu tối đa 10 lệnh command gần nhất
+                if (commandHistory.length > 10) {
+                    commandHistory = commandHistory.slice(-10);
                 }
-                
-                localStorage.setItem("command-history", JSON.stringify(commandHistory));
-                
+                localStorage.setItem("command-history", JSON.stringify(commandHistory)); //chuyển lịch sử từ string sang json  
                 processCommand(command);
-                
 
                 setTimeout(() => {
                     terminalOutput.scrollTop = terminalOutput.scrollHeight;
@@ -660,14 +635,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (commandHistory.length === 0) {
                     response.innerHTML = "<i>Command history is empty</i>";
                 } else {
-                    const historyItems = commandHistory.map((cmd, index) => 
+                    const historyItems = commandHistory.map((cmd, index) =>
                         `<div><span class="history-num">${index + 1}</span> ${cmd}</div>`
                     ).join("");
                     response.innerHTML = `<div class="history-list">${historyItems}</div>`;
                 }
                 break;
-                case "tictactoe":
-                    response.innerHTML = `
+            case "tictactoe":
+                response.innerHTML = `
                         <div class="tictactoe-container">
                             <div class="tictactoe-status">Game mới bắt đầu - Lượt của X</div>
                             <div class="tictactoe-board">
@@ -690,8 +665,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button class="tictactoe-reset">Chơi lại</button>
                         </div>
                     `;
-                    const gameStyle = document.createElement('style');
-                    gameStyle.textContent = `
+                const gameStyle = document.createElement('style');
+                gameStyle.textContent = `
                         .tictactoe-container {
                             padding: 10px;
                             margin-top: 10px;
@@ -737,18 +712,16 @@ document.addEventListener("DOMContentLoaded", function () {
                             background-color: rgba(51, 255, 51, 0.1);
                         }
                     `;
-                    document.head.appendChild(gameStyle);
-                    
+                document.head.appendChild(gameStyle);
 
-                    setTimeout(() => {
-                        initTicTacToe(response);
-                    }, 100);
-                    break;
+                setTimeout(() => {
+                    initTicTacToe(response);
+                }, 100);
+                break;
             default:
-
                 response.innerHTML = `Gõ <span class="error-text"> sai chính tả </span> rồi á người đẹp ơi :3 <br>Command not found: <span class="error-text">${command}</span><br>Type <span class="cmd-highlight">help</span> for available commands.`;
         }
-        
+
         terminalOutput.appendChild(response);
     }
 
@@ -790,10 +763,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function getSkillsHtml() {
-        const frontendSkills = ["HTML5", "CSS3", "JavaScript", "React.js", "Vue.js", "Tailwind CSS", "Bootstrap"];
-        const backendSkills = ["Node.js", "Express", "PHP", "MongoDB", "MySQL"];
-        const toolsSkills = ["Git", "Webpack", "Docker", "VS Code", "Figma"];
-        
+        const frontendSkills = ["HTML5", "CSS3", "JavaScript", "React.js", "Tailwind CSS", "Bootstrap"];
+        const backendSkills = ["Node.js", "MySQL"];
+        const toolsSkills = ["Git", "VS Code", "Figma"];
         return `
             <div class="skills-container">
                 <div class="skill-category">
@@ -817,7 +789,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
     }
-
     function getProjectsHtml() {
         const projects = [
             {
@@ -841,8 +812,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 desc: "A visualization project demonstrating AVL tree balancing and rotations."
             }
         ];
-        
-        
+
+
         return `
             <div class="projects-list">
                 ${projects.map(project => `
@@ -859,10 +830,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function simulateWeatherReport(element) {
         const weather = ["Sunny", "Cloudy", "Rainy", "Thunderstorm", "Snowy", "Windy", "Foggy"];
-        const temp = Math.floor(Math.random() * 35) + 5; 
+        const temp = Math.floor(Math.random() * 35) + 5;
         const humidity = Math.floor(Math.random() * 60) + 30;
         const condition = weather[Math.floor(Math.random() * weather.length)];
-        
+
         element.innerHTML = `
             <div class="weather-report">
                 <div class="weather-main">
@@ -880,7 +851,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function navigateHistory(direction) {
         if (commandHistory.length === 0) return;
-        
+
         if (direction === "up") {
             historyIndex = Math.max(0, historyIndex - 1);
             terminalInput.value = commandHistory[historyIndex] || "";
@@ -892,7 +863,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function applyTheme(theme) {
         if (!themes[theme]) theme = "monokai";
-        
         const themeProps = themes[theme];
         document.documentElement.style.setProperty("--terminal-bg", themeProps.bg);
         document.documentElement.style.setProperty("--terminal-text", themeProps.text);
@@ -900,54 +870,52 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.style.setProperty("--prompt-color", themeProps.promptColor);
         document.documentElement.style.setProperty("--link-color", themeProps.linkColor);
         document.documentElement.style.setProperty("--terminal-font", themeProps.font);
-        
+
         currentTheme = theme;
         localStorage.setItem("terminal-theme", theme);
-        
+
         terminal.className = "terminal-mode";
         terminal.classList.add(`theme-${theme}`);
-        
+
         if (theme === "hacker" || theme === "matrix") {
             terminal.classList.add("retro-effect");
         } else {
             terminal.classList.remove("retro-effect");
         }
     }
-
-    terminalInput.addEventListener("keydown", function(e) {
+    terminalInput.addEventListener("keydown", function (e) {
         if (e.key === "Tab") {
             e.preventDefault();
             const currentInput = terminalInput.value.trim().toLowerCase();
             if (!currentInput) return;
-            
+
             const commands = [
-                "help", "about", "skills", "projects", "contact", 
-                "clear", "time", "theme", "echo", "weather", 
-                "joke", "exit", "history"
+                "help", "about", "skills", "projects", "contact",
+                "clear", "time", "theme", "echo", "weather",
+                "joke", "exit", "history", "tictactoe"
             ];
-            
+
             if (currentInput.startsWith("theme ")) {
                 const themePrefix = currentInput.split(" ")[1] || "";
-                const matchingThemes = Object.keys(themes).filter(t => 
+                const matchingThemes = Object.keys(themes).filter(t =>
                     t.startsWith(themePrefix)
                 );
-                
+
                 if (matchingThemes.length === 1) {
                     terminalInput.value = `theme ${matchingThemes[0]}`;
                 }
                 return;
             }
-            
-            const matchingCommands = commands.filter(cmd => 
+
+            const matchingCommands = commands.filter(cmd =>
                 cmd.startsWith(currentInput)
             );
-            
+
             if (matchingCommands.length === 1) {
                 terminalInput.value = matchingCommands[0];
             }
         }
     });
-
 
 
 });
@@ -957,104 +925,190 @@ function initTicTacToe(container) {
     const cells = container.querySelectorAll('.tictactoe-cell');
     const status = container.querySelector('.tictactoe-status');
     const resetButton = container.querySelector('.tictactoe-reset');
-    
-    let currentPlayer = 'X';
+
+    const humanPlayer = 'X';
+    const robotPlayer = 'O';
+    let currentPlayer = humanPlayer;
     let gameState = ['', '', '', '', '', '', '', '', ''];
     let gameActive = true;
-    
-    const winningConditions = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ];
-    
+
+    const winningConditions =
+        [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ]
     function handleCellClick(clickedCellEvent) {
         const clickedCell = clickedCellEvent.target;
         const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
-        
-        if (gameState[clickedCellIndex] !== '' || !gameActive) {
+        if (gameState[clickedCellIndex] !== '' || !gameActive || currentPlayer !== humanPlayer) {
             return;
         }
-        
-        gameState[clickedCellIndex] = currentPlayer;
-        clickedCell.textContent = currentPlayer;
-        clickedCell.style.color = currentPlayer === 'X' ? '#33ff33' : '#ff3366';
-        
-        checkResult();
+        makeMove(clickedCell, clickedCellIndex, humanPlayer)
+        //!                                                             ktra kq sau lượt đánh của người chơi
+        //!                                                         nếu game active thì settime cho máy đánh
+        if (gameActive) {
+            setTimeout(() => {
+                robotMove();
+            }, 600);
+        }
     }
-    
-    function checkResult() {
-        let roundWon = false;
-        
+
+    function makeMove(cell, index, player) {
+        gameState[index] = player;
+        cell.textContent = player;
+        cell.style.color = player === humanPlayer ? '#33ff33' : '#ff3366';
+
+        checkResult();
+
+    }
+
+    function robotMove() {
+        if (!gameActive) return;
+        const bestMove = findBestMove();
+        const cell = cells[bestMove];
+        makeMove(cell, bestMove, robotPlayer);
+    }
+
+    function findBestMove() {
+        // chon buoc di robot:
+        // 1. thang neu co co hoi ()
+        // 2. chan buoc thang của người
+        // 3. ưu tiên chọn ô trung tâm
+        // 4. ưu tiên chọn góc trống
+        // 5. ưu tiên chọn cạnh trống
+
+        //1
+        for (let i = 0; i < 9; i++) {
+            if (gameState[i] === '') {
+                gameState[i] = robotPlayer;
+                if (checkWinner(gameState, robotPlayer)) {
+                    gameState[i] = '';
+                    return i;
+                }
+                gameState[i] = '';
+            }
+        }
+
+        // chặn người chơi nếu có cơ hội thắng
+        for (let i = 0; i < 9; i++) {
+            if (gameState[i] === '') {
+                gameState[i] = humanPlayer;
+                if (checkWinner(gameState, humanPlayer)) {
+                    gameState[i] = '';
+                    return i;
+                }
+                gameState[i] = '';
+            }
+        }
+
+        // Ưu tiên ô trung tâm
+        if (gameState[4] === '') {
+            return 4;
+        }
+
+        // Ưu tiên các góc
+        const corners = [0, 2, 6, 8];
+        const availableCorners = corners.filter(corner => gameState[corner] === '');
+        if (availableCorners.length > 0) {
+            const randomCorner = Math.floor(Math.random() * availableCorners.length);
+            return availableCorners[randomCorner];
+        }
+
+        // Chọn các cạnh còn lại
+        const edges = [1, 3, 5, 7];
+        const availableEdges = edges.filter(edge => gameState[edge] === '');
+        if (availableEdges.length > 0) {
+            const randomEdge = Math.floor(Math.random() * availableEdges.length);
+            return availableEdges[randomEdge];
+        }
+
+        return -1;
+    }
+
+    function checkWinner(board, player) {
         for (let i = 0; i < winningConditions.length; i++) {
             const [a, b, c] = winningConditions[i];
-            
+            if (board[a] === player && board[b] === player && board[c] === player) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function checkResult() {
+        let roundWon = false;
+        for (let i = 0; i < winningConditions.length; i++) {
+            const [a, b, c] = winningConditions[i];
             if (gameState[a] === '' || gameState[b] === '' || gameState[c] === '') {
                 continue;
             }
-            
             if (gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
                 roundWon = true;
                 break;
             }
         }
-        
         if (roundWon) {
-            status.textContent = `Người chơi ${currentPlayer} thắng!`;
+            status.style.color = '#ff3366';
+            if (humanPlayer === robotPlayer) {
+                status.textContent = "Bạn thắng";
+            }
+            else {
+                status.textContent = "Máy thắng";
+            }
             gameActive = false;
             return;
         }
-        
         const roundDraw = !gameState.includes('');
         if (roundDraw) {
             status.textContent = 'Hòa!';
             gameActive = false;
             return;
         }
-        
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        status.textContent = `Lượt của ${currentPlayer}`;
+        currentPlayer = currentPlayer === humanPlayer ? robotPlayer : humanPlayer;
+        if (currentPlayer === humanPlayer) {
+            status.textContent = `Lượt của bạn`;
+        } else {
+            status.textContent = `Máy đang suy nghĩ...`;
+        }
     }
-    
     function restartGame() {
-        currentPlayer = 'X';
+        currentPlayer = humanPlayer;
         gameState = ['', '', '', '', '', '', '', '', ''];
         gameActive = true;
-        status.textContent = 'Game mới bắt đầu - Lượt của X';
-        
+        status.textContent = 'Game mới bắt đầu - Lượt của bạn';
+
         cells.forEach(cell => {
             cell.textContent = '';
         });
     }
-    
     cells.forEach(cell => {
         cell.addEventListener('click', handleCellClick);
     });
-    
+
     resetButton.addEventListener('click', restartGame);
-    
+
     board.addEventListener('mousewheel', (e) => {
         e.stopPropagation();
     }, { passive: false });
 }
 
 const terminal = document.querySelector('.terminal');
-
 document.addEventListener("DOMContentLoaded", () => {
     const terminal = document.querySelector('.terminal');
 
     if (terminal) {
         terminal.addEventListener("mouseenter", () => {
-            document.body.style.overflow = "hidden"; 
+            document.body.style.overflow = "hidden";
         });
 
         terminal.addEventListener("mouseleave", () => {
-            document.body.style.overflow = ""; 
+            document.body.style.overflow = "";
         });
     } else {
         console.warn("Element .terminal not found!");
